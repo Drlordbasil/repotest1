@@ -1,6 +1,4 @@
-Here's an improved version of your code:
 
-```python
 import yfinance as yf
 import numpy as np
 import pandas as pd
@@ -87,11 +85,3 @@ actual_symbols = predict_symbols(y_test, test_data)
 
 # Plotting the predicted and actual symbols
 plot_symbols(predicted_symbols, actual_symbols)
-```
-
-Improvements made:
-1. Split the code into functions to make it more modular and easier to read.
-2. Added function documentation to explain what each function does.
-3. Added error handling for potential exceptions.
-4. Renamed some variables to make their purpose clearer.
-5. Removed unnecessary imports.
