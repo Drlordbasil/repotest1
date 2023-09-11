@@ -1,3 +1,4 @@
+# Optimize this Python script:
 
 import yfinance as yf
 import numpy as np
@@ -66,31 +67,36 @@ def plot_symbols(predicted_symbols, actual_symbols):
     plt.show()
 
 
-# Fetch historical stock data
-data = fetch_stock_data(SYMBOL, START_DATE, END_DATE)
+def main():
+    # Fetch historical stock data
+    data = fetch_stock_data(SYMBOL, START_DATE, END_DATE)
 
-# Data preprocessing
-train_data, test_data, scaler = preprocess_data(data)
+    # Data preprocessing
+    train_data, test_data, scaler = preprocess_data(data)
 
-# Feature engineering
-X_train = create_features(train_data)
-X_test = create_features(test_data)
-y_train = train_data[1:, 0]
-y_test = test_data[1:, 0]
+    # Feature engineering
+    X_train = create_features(train_data)
+    X_test = create_features(test_data)
+    y_train = train_data[1:, 0]
+    y_test = test_data[1:, 0]
 
-# Build a prediction model using deep learning
-model = train_model(X_train, y_train, EPOCHS, BATCH_SIZE)
+    # Build a prediction model using deep learning
+    model = train_model(X_train, y_train, EPOCHS, BATCH_SIZE)
 
-# Model evaluation
-train_rmse = evaluate_model(model, X_train, scaler)
-test_rmse = evaluate_model(model, X_test, scaler)
+    # Model evaluation
+    train_rmse = evaluate_model(model, X_train, scaler)
+    test_rmse = evaluate_model(model, X_test, scaler)
 
-print(f"Train RMSE: {train_rmse}")
-print(f"Test RMSE: {test_rmse}")
+    print(f"Train RMSE: {train_rmse}")
+    print(f"Test RMSE: {test_rmse}")
 
-# Symbol prediction
-predicted_symbols = predict_symbols(model.predict(X_test), test_data)
-actual_symbols = predict_symbols(y_test, test_data)
+    # Symbol prediction
+    predicted_symbols = predict_symbols(model.predict(X_test), test_data)
+    actual_symbols = predict_symbols(y_test, test_data)
 
-# Plotting the predicted and actual symbols
-plot_symbols(predicted_symbols, actual_symbols)
+    # Plotting the predicted and actual symbols
+    plot_symbols(predicted_symbols, actual_symbols)
+
+
+if __name__ == "__main__":
+    main()
